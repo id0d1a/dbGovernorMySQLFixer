@@ -21,6 +21,8 @@ systemctl start mysqld
 systemctl start mariadb.service
 systemctl start mysqld.service
 /usr/share/lve/dbgovernor/mysqlgovernor.py --install
+mysql -e "DELETE FROM mysql.user WHERE User=''; FLUSH PRIVILEGES;"
+mysql -e 'drop database test'
 echo " "
 echo " Done! Now update MySQL Root Password through WHM "
 echo " "
