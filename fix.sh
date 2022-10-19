@@ -1,6 +1,6 @@
 #!/bin/bash
 echo " "
-echo " cPanel Fix MySQL Governor for Cloudlinux Utility "
+echo " cPanel after-Reboot Stage 2 Install "
 echo " "
 yum -y remove mysql-community-server mysql-community-client
 yum -y remove MariaDB-server MariaDB-client
@@ -20,9 +20,7 @@ systemctl enable mariadb
 systemctl start mysqld
 systemctl start mariadb.service
 systemctl start mysqld.service
-/usr/share/lve/dbgovernor/mysqlgovernor.py --install
+/usr/share/lve/dbgovernor/mysqlgovernor.py --install --yes
 mysql -e "DELETE FROM mysql.user WHERE User=''; FLUSH PRIVILEGES;"
 mysql -e 'drop database test'
-echo " "
-echo " Done! Now update MySQL Root Password through WHM "
-echo " "
+
