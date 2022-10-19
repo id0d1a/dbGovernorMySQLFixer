@@ -2,6 +2,8 @@
 echo " "
 echo " cPanel after-Reboot Stage 2 Install "
 echo " "
+cagefsctl --init
+/usr/share/lve/dbgovernor/mysqlgovernor.py --install --yes
 yum -y remove mysql-community-server mysql-community-client
 yum -y remove MariaDB-server MariaDB-client
 rm -rf /var/lib/mysql
